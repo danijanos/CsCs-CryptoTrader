@@ -1,13 +1,28 @@
-const url = "https://obudai-api.azurewebsites.net/api/exchange/";
-const CsCs_APIKEY = "F98143CD-1DAF-4D4A-A929-E6588AD72C8B";
+/*
+ * Variables to store API data
+ */
+
+var nagyvallalatiAPI = {
+    url: "https://obudai-api.azurewebsites.net/api/",
+    CsCs_APIKEY: "F98143CD-1DAF-4D4A-A929-E6588AD72C8B",
+    headerTokenType: "X-Access-Token"
+};
+
+var nagyvallalatiAPI_EndpointResources = {
+    exchange: nagyvallalatiAPI.url + "exchange/",
+    account: nagyvallalatiAPI.url + "account/",
+    purchase: nagyvallalatiAPI.url + "account/purchase/",
+    reset: nagyvallalatiAPI.url + "account/reset/"
+};
 
 function GetCurrency(){
   var currency = document.getElementById('currency_type').value;
-  var resource = url + currency;
+  var resource = nagyvallalatiAPI_EndpointResources.exchange + currency;
+
   var oReq = new XMLHttpRequest();
   oReq.addEventListener("load", reqListener);
   oReq.open("GET", resource, true);
-  oReq.setRequestHeader("X-Access-Token", CsCs_APIKEY)
+  oReq.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY)
   oReq.send();
 }
 
