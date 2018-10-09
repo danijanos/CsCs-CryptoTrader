@@ -15,50 +15,55 @@ var nagyvallalatiAPI_EndpointResources = {
     reset: nagyvallalatiAPI.url + "account/reset/"
 };
 
-function GetCurrency(){
-  var currency = document.getElementById('currency_type').value;
-  var resource = nagyvallalatiAPI_EndpointResources.exchange + currency;
+function GetCurrency() {
+    var currency = document.getElementById('currency_type').value;
+    var resource = nagyvallalatiAPI_EndpointResources.exchange + currency;
 
-  var oReq = new XMLHttpRequest();
-  oReq.addEventListener("load", reqListener);
-  oReq.open("GET", resource, true);
-  oReq.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY)
-  oReq.send();
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener("load", reqListener);
+    oReq.open("GET", resource, true);
+    oReq.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY)
+    oReq.send();
 }
 
 function reqListener() {
-  var currency = JSON.parse(this.responseText);
-  // if error?
-  document.getElementById("currency_name").innerHTML = currency.symbol;
-  document.getElementById("currency_value").innerHTML = currency.currentRate;
+    var currency = JSON.parse(this.responseText);
+    // if error?
+    document.getElementById("currency_name").innerHTML = currency.symbol;
+    document.getElementById("currency_value").innerHTML = currency.currentRate;
 }
 
-function getBalance(){
+function getBalance() {
     var httpRequest;
     var resource = nagyvallalatiAPI_EndpointResources.account;
     document.getElementById("getBalanceButton").addEventListener('click', makeRequest);
 
     function makeRequest() {
         httpRequest = new XMLHttpRequest();
-    
+
         if (!httpRequest) {
-          alert('Giving up :( Cannot create an XMLHTTP instance');
-          return false;
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
         }
 
         httpRequest.onreadystatechange = alertContents;
         httpRequest.open('GET', resource, true);
         httpRequest.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY)
         httpRequest.send();
-      }
+    }
 
-      function alertContents() {
-        if (httpRequest.readyState === XMLHttpRequest.DONE) {
-          if (httpRequest.status === 200) {
-            alert(httpRequest.responseText);
-          } else {
-            alert('There was a problem with the request.');
-          }
+    function alertContents() {
+        try {
+            if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                if (httpRequest.status === 200) {
+                    alert(httpRequest.responseText);
+                } else {
+                    alert('There was a problem with the request.');
+                }
+            }
         }
-      }
+        catch (e) {
+            alert('Caught Exception: ' + e.description);
+        }
+    }
 }
