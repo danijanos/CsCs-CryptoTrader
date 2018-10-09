@@ -32,3 +32,33 @@ function reqListener() {
   document.getElementById("currency_name").innerHTML = currency.symbol;
   document.getElementById("currency_value").innerHTML = currency.currentRate;
 }
+
+function getBalance(){
+    var httpRequest;
+    var resource = nagyvallalatiAPI_EndpointResources.account;
+    document.getElementById("getBalanceButton").addEventListener('click', makeRequest);
+
+    function makeRequest() {
+        httpRequest = new XMLHttpRequest();
+    
+        if (!httpRequest) {
+          alert('Giving up :( Cannot create an XMLHTTP instance');
+          return false;
+        }
+
+        httpRequest.onreadystatechange = alertContents;
+        httpRequest.open('GET', resource, true);
+        httpRequest.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY)
+        httpRequest.send();
+      }
+
+      function alertContents() {
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+          if (httpRequest.status === 200) {
+            alert(httpRequest.responseText);
+          } else {
+            alert('There was a problem with the request.');
+          }
+        }
+      }
+}
