@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300&subset=latin-ext');
+
+body {
+  font-family: 'Work sans';
+  height: 100vh;
+  min-height: 100vh;
+  margin: 10px;
+  padding: 20px;
+}
+
+.f-grow-0 {
+  flex-grow: 0;
+}
+
+.f-grow-1 {
+  flex-grow: 1;
+}
+
+.column-spacer {
+  margin: 0 0 10px 0;
+}
+
+.carousel {
+    margin-bottom: 10px
+}
