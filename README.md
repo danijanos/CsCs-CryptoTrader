@@ -10,5 +10,5 @@ CsCs-Crypto Trader is an exchange application which follows the price of each cr
 |2               |János Dani                     |
 |3               |Jozsef Gerjak                  |
 |4               |Péter Romsics                  |
-## The topic
-> - **Crypto trading UI and backend**
+
+[![Postman Collection](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d23be67574745e5a3688)
