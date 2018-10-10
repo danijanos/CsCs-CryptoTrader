@@ -22,7 +22,7 @@ function GetCurrency() {
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", reqListener);
     oReq.open("GET", resource, true);
-    oReq.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY)
+    oReq.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY);
     oReq.send();
 }
 
@@ -48,7 +48,7 @@ function getBalance() {
 
         httpRequest.onreadystatechange = alertContents;
         httpRequest.open('GET', resource, true);
-        httpRequest.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY)
+        httpRequest.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY);
         httpRequest.send();
     }
 
@@ -56,7 +56,8 @@ function getBalance() {
         try {
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
                 if (httpRequest.status === 200) {
-                    alert(httpRequest.responseText);
+                    var balanceData = JSON.parse(httpRequest.responseText);
+                    document.getElementById("balanceAmount").innerText = balanceData.usd + " $";
                 } else {
                     alert('There was a problem with the request.');
                 }
