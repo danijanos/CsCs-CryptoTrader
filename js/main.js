@@ -35,9 +35,9 @@ function GetCurrency() {
 
 function reqListener() {
     var currency = JSON.parse(this.responseText);
-    // if error?
+    var currencyValue = Number.parseFloat(currency.currentRate).toFixed(2);
     document.getElementById("currency_name").innerHTML = currency.symbol;
-    document.getElementById("currency_value").innerHTML = currency.currentRate;
+    document.getElementById("currency_value").innerHTML = currencyValue;
 }
 
 function getBalance() {
