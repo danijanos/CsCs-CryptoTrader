@@ -2,13 +2,13 @@
  * Variables to store API data
  */
 
-var nagyvallalatiAPI = {
+const nagyvallalatiAPI = {
     url: "https://obudai-api.azurewebsites.net/api/",
     CsCs_APIKEY: "F98143CD-1DAF-4D4A-A929-E6588AD72C8B",
     headerTokenType: "X-Access-Token"
 };
 
-var nagyvallalatiAPI_EndpointResources = {
+const nagyvallalatiAPI_EndpointResources = {
     exchange: nagyvallalatiAPI.url + "exchange/",
     account: nagyvallalatiAPI.url + "account/",
     purchase: nagyvallalatiAPI.url + "account/purchase/",
