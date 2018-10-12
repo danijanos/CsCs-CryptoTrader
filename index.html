@@ -26,70 +26,100 @@
 </head>
 
 <body>
-  <div id="main-content">
 
-    <div class="container">
+  <div class="row">
 
-      <div class="col">
+    <div class="col-sm-7 border">
+      Kereskedés
 
-        <div class="col">
-
-          <div class="card border-info mb-3" style="max-width: 18rem;">
-            <div class="card-header text-white bg-info">Get Balance</div>
-            <div class="card-body text-info">
-              <p class="card-text">Get your balance by clicking the button below</p>
-              <button id="getBalanceButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="getBalance();">Get
-                my balance</button>
-            </div>
-            <div id="balanceAmount" class="card-footer bg-transparent border-info"></div>
+      <!-- Balance -->
+      <div class="row border">
+        <div class="card border-info mb-3" style="max-width: 18rem;">
+          <div class="card-header text-white bg-info">Get Balance</div>
+          <div class="card-body text-info">
+            <p class="card-text">Get your balance by clicking the button below</p>
+            <button id="getBalanceButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="getBalance();">Get
+              my balance</button>
           </div>
-
+          <div id="balanceAmount" class="card-footer bg-transparent border-info"></div>
         </div>
+      </div>
 
-        <div class="col">
-          <div class="row">
+      <div class="row">
+        <div class="col-8 col-sm-6 border">
+          Eladás
+        </div>
+        <div class="col-4 col-sm-6 border">
+          Vétel
+        </div>
+      </div>
 
-            <div class="col column-spacer">
+      <div class="row">
+        <div class="col border">
+          Eladás részletek
+        </div>
+        <div class="col border">
+          Vétel részletek
+        </div>
+      </div>
 
-              <div class="input-group mb-3">
-                <input id="currency_type" name="CurrencyType" type="text" class="form-control" placeholder="Type the name of the currency here"
-                  aria-label="Type the name of the currency here" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" onclick="GetCurrency()">Get currency</button>
-                </div>
-              </div>
+      <div class="row">
+        Tranzakció történet (táblázat)
+      </div>
 
+    </div>
+
+    <div class="col border">
+      Kriptovaluta árfolyam (grafikon)
+    </div>
+
+  </div>
+
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col">
+      <div class="row">
+
+        <div class="col column-spacer">
+
+          <div class="input-group mb-3">
+            <input id="currency_type" name="CurrencyType" type="text" class="form-control" placeholder="Type the name of the currency here"
+              aria-label="Type the name of the currency here" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" onclick="GetCurrency()">Get currency</button>
             </div>
-
           </div>
 
-          <div class="row">
-
-            <div class="col">
-
-              <table class="table table-bordered thead-dark table-hover">
-                <thead>
-                  <tr>
-                    <th>Currency Name</th>
-                    <th>Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td id="currency_name"></td>
-                    <td id="currency_value"></td>
-                  </tr>
-                </tbody>
-              </table>
-
-            </div>
-
-          </div>
         </div>
 
       </div>
 
+      <div class="row">
+
+        <div class="col">
+
+          <table class="table table-bordered thead-dark table-hover">
+            <thead>
+              <tr>
+                <th>Currency Name</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="currency_name"></td>
+                <td id="currency_value"></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+      </div>
     </div>
+
   </div>
 
   <script src="js/main.js"></script>
