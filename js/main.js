@@ -15,13 +15,6 @@ const nagyvallalatiAPI_EndpointResources = {
     reset: nagyvallalatiAPI.url + "account/reset/"
 };
 
-function getStatus() {
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open("GET", nagyvallalatiAPI.url, true);
-    httpRequest.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY);
-    httpRequest.send();    
-}
-
 function GetCurrency() {
     var currency = document.getElementById('currency_type').value;
     var resource = nagyvallalatiAPI_EndpointResources.exchange + currency;
