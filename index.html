@@ -34,15 +34,27 @@
 
       <!-- Balance -->
       <div class="row border">
+
         <div class="card border-info mb-3" style="max-width: 18rem;">
-          <div class="card-header text-white bg-info">Get Balance</div>
-          <div class="card-body text-info">
-            <p class="card-text">Get your balance by clicking the button below</p>
-            <button id="getBalanceButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="getBalance();">Get
-              my balance</button>
+          <div class="card-header text-white bg-info text-uppercase font-weight-bold">Egyenleg</div>
+          <div class="card-body text-dark">
+            <ul class="list-group list-group-flush">
+              <li id="balanceAmount" class="list-group-item text-success">
+                Készpénz :
+              </li>
+              <li id="btc" class="list-group-item">
+                Bitcoin :
+              </li>
+              <li id="eth" class="list-group-item">
+                Ethereum :
+              </li>
+              <li id="xrp" class="list-group-item">
+                Ripple :
+              </li>
+            </ul>
           </div>
-          <div id="balanceAmount" class="card-footer bg-transparent border-info"></div>
         </div>
+
       </div>
 
       <div class="row">
