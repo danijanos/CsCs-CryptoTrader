@@ -33,9 +33,11 @@ function historyListener() {
             switch (HistoryTableHeaders[j].id) {
                 case "createdAt":
                     tdnode.innerText = historyJSON[i][HistoryTableHeaders[j].id];
+                    break;
                 case "exchangeRate":
-                    currentrate = historyJSON[i].exchangeRates[String(historyJSON[i]["symbol"]).toLowerCase()];
+                    currentrate = historyJSON[i].exchangeRates["btc"];
                     tdnode.innerText = currentrate * historyJSON[i].amount;
+                    break;
                 default:
                     tdnode.innerText = historyJSON[i][HistoryTableHeaders[j].id];
             }
