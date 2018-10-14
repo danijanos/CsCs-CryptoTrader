@@ -20,11 +20,9 @@ httpRequest.send();
 
 function historyListener() {
     var historyJSON = JSON.parse(this.responseText);
-    var latesttime = document.getElementById("latestTime")
 
     for (i = historyJSON.length - 1; i > 0; i--) {
         if (historyJSON[i].type == "Reset") { continue; }
-        if (Date.parse(historyJSON[i].createdAt) == latesttime.innerText) { break; }
 
         var newrow = document.createElement("tr");
         for (j = 0; j < HistoryTableHeaders.length; j++) {
@@ -32,7 +30,8 @@ function historyListener() {
 
             switch (HistoryTableHeaders[j].id) {
                 case "createdAt":
-                    tdnode.innerText = historyJSON[i][HistoryTableHeaders[j].id];
+                    var datestring = historyJSON[i][HistoryTableHeaders[j].id]
+                    tdnode.innerText = String(datestring).replace("T", " ").substring(0,19);
                     break;
                 case "exchangeRate":
                     currentrate = historyJSON[i].exchangeRates["btc"];
@@ -45,6 +44,5 @@ function historyListener() {
         }
         HistoryTableBody.appendChild(newrow);
     }
-    latesttime.innertext = Date.parse(historyJSON[historyJSON.length - 1].createdAt);
     console.log(Date.parse(historyJSON[historyJSON.length - 1].createdAt));
 }
