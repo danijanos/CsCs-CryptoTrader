@@ -120,15 +120,47 @@
       <div class="col">
 
         <div class="col">
-
-          <div class="card border-info mb-3" style="max-width: 18rem;">
-            <div class="card-header text-white bg-info">Get Balance</div>
-            <div class="card-body text-info">
-              <p class="card-text">Get your balance by clicking the button below</p>
-              <button id="getBalanceButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="getBalance()">Get my balance</button>
-            </div>
-            <div id="balanceAmount" class="card-footer bg-transparent border-info"></div>
+          <div class="row">
+              <div class="card border-info mb-3" style="max-width: 18rem;">
+                  <div class="card-header text-white bg-info">Get Balance</div>
+                  <div class="card-body text-info">
+                    <p class="card-text">Get your balance by clicking the button below</p>
+                    <button id="getBalanceButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="getBalance()">Get my balance</button>
+                  </div>
+                  <div id="balanceAmount" class="card-footer bg-transparent border-info"></div>
+                </div>
           </div>
+          <div class="row">
+            <!--Sell Card-->
+          <div class="card border-info mb-3" style="max-width: 18rem;">
+              <div class="card-header text-white bg-info">Sell</div>
+              <div class="card-body text-info">
+                <p class="card-text">Choose currency and enter the amount</p>
+              </div>
+              <div class="card-body text-info">
+                <input type="text" id="sellAmount" value="0">
+                <select id="sellDropdown"></select>
+              </div>
+              <div class="card-footer bg-transparent border-info">
+                <button id="sellButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="SendSellRequest()">Sell</button>
+              </div>
+            </div>
+            <!--Purchase Card-->
+            <div class="card border-info mb-3" style="max-width: 18rem;">
+                <div class="card-header text-white bg-info">Purchase</div>
+                <div class="card-body text-info">
+                  <p class="card-text">Choose currency and enter the amount</p>
+                </div>
+                <div class="card-body text-info">
+                  <input type="text" id="purchaseAmount" value="0">
+                  <select id="purchaseDropdown"></select>
+                </div>
+                <div class="card-footer bg-transparent border-info">
+                  <button id="purchaseButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="SendPurchaseRequest()">Purchase</button>
+                </div>
+              </div>
+          </div>
+          
 
         </div>
 
