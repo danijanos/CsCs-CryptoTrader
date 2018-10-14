@@ -28,134 +28,111 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="row">
 
-    <a class="navbar-brand" onclick="" href="index.html">Home</a>
+    <div class="col-sm-7 border">
+      Kereskedés
 
-    <!-- Responsive navbar -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <!-- Balance -->
+      <div class="row border">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" onclick="" href="#">Balance<span class="sr-only">(current)</span></a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Buy</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sell</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Chart</a>
-        </li>
-
-      </ul>
-
-    </div>
-  </nav>
-
-  <div id="main-content">
-
-    <div class="container">
-
-      <div class="col">
-
-        <div class="col">
-
-          <div class="card border-info mb-3" style="max-width: 18rem;">
-            <div class="card-header text-white bg-info">Get Balance</div>
-            <div class="card-body text-info">
-              <p class="card-text">Get your balance by clicking the button below</p>
-              <button id="getBalanceButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="getBalance()">Get my balance</button>
-            </div>
-            <div id="balanceAmount" class="card-footer bg-transparent border-info"></div>
-          </div>
-
-        </div>
-
-        <div class="row">
-          <!--Sell Card-->
         <div class="card border-info mb-3" style="max-width: 18rem;">
-            <div class="card-header text-white bg-info">Sell</div>
-            <div class="card-body text-info">
-              <p class="card-text">Choose currency and enter the amount</p>
-            </div>
-            <div class="card-body text-info">
-              <input type="text" id="sellAmount" value="0">
-              <select id="sellDropdown"></select>
-            </div>
-            <div class="card-footer bg-transparent border-info">
-              <button id="sellButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="SendSellRequest()">Sell</button>
-            </div>
-          </div>
-          <!--Purchase Card-->
-          <div class="card border-info mb-3" style="max-width: 18rem;">
-              <div class="card-header text-white bg-info">Purchase</div>
-              <div class="card-body text-info">
-                <p class="card-text">Choose currency and enter the amount</p>
-              </div>
-              <div class="card-body text-info">
-                <input type="text" id="purchaseAmount" value="0">
-                <select id="purchaseDropdown"></select>
-              </div>
-              <div class="card-footer bg-transparent border-info">
-                <button id="purchaseButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="SendPurchaseRequest()">Purchase</button>
-              </div>
-            </div>
-        </div>
-
-        <div class="col">
-          <div class="row">
-
-            <div class="col column-spacer">
-
-              <div class="input-group mb-3">
-                <input id="currency_type" name="CurrencyType" type="text" class="form-control" placeholder="Type the name of the currency here"
-                  aria-label="Type the name of the currency here" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" onclick="GetCurrency()">Get currency</button>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="row">
-
-            <div class="col">
-
-              <table class="table table-bordered thead-dark table-hover">
-                <thead>
-                  <tr>
-                    <th>Currency Name</th>
-                    <th>Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td id="currency_name"></td>
-                    <td id="currency_value"></td>
-                  </tr>
-                </tbody>
-              </table>
-
-            </div>
-
+          <div class="card-header text-white bg-info text-uppercase font-weight-bold">Egyenleg</div>
+          <div class="card-body text-dark">
+            <ul class="list-group list-group-flush">
+              <li id="balanceAmount" class="list-group-item text-success">
+                Készpénz :
+              </li>
+              <li id="btc" class="list-group-item">
+                Bitcoin :
+              </li>
+              <li id="eth" class="list-group-item">
+                Ethereum :
+              </li>
+              <li id="xrp" class="list-group-item">
+                Ripple :
+              </li>
+            </ul>
           </div>
         </div>
 
       </div>
 
+      <div class="row">
+        <div class="col-8 col-sm-6 border">
+          Eladás
+        </div>
+        <div class="col-4 col-sm-6 border">
+          Vétel
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col border">
+          Eladás részletek
+        </div>
+        <div class="col border">
+          Vétel részletek
+        </div>
+      </div>
+
+      <div class="row">
+        Tranzakció történet (táblázat)
+      </div>
+
     </div>
+
+    <div class="col border">
+      Kriptovaluta árfolyam (grafikon)
+    </div>
+
+  </div>
+
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col">
+      <div class="row">
+
+        <div class="col column-spacer">
+
+          <div class="input-group mb-3">
+            <input id="currency_type" name="CurrencyType" type="text" class="form-control" placeholder="Type the name of the currency here"
+              aria-label="Type the name of the currency here" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" onclick="GetCurrency()">Get currency</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col">
+
+          <table class="table table-bordered thead-dark table-hover">
+            <thead>
+              <tr>
+                <th>Currency Name</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="currency_name"></td>
+                <td id="currency_value"></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
   <script src="js/main.js"></script>
