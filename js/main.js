@@ -16,7 +16,19 @@ const nagyvallalatiAPI_EndpointResources = {
     history: nagyvallalatiAPI.url + "account/history/"
 };
 
-document.addEventListener('DOMcontentLoaded', getBalance());
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+        initFunctions();
+    }, false);
+} else {  // `DOMContentLoaded` already fired
+    initFunctions();
+}
+
+function initFunctions() {
+    getBalance()
+    populateDropdowns();
+}
+
 
 function GetCurrency() {
     var currency = document.getElementById('currency_type').value;
