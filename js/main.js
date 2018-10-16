@@ -19,6 +19,30 @@ const nagyvallalatiAPI_EndpointResources = {
     history: nagyvallalatiAPI.url + "account/history/"
 };
 
+const btc = {
+    name: "Bitcoin",
+    mark: "BTC",
+    symbol: "Ƀ"
+}
+
+const eth = {    
+    name: "Ethereum",
+    mark: "ETH",
+    symbol: "Ξ"
+}
+
+const xrp = {
+    name: "Ripple",
+    mark: "XRP",
+    symbol: "X"
+}
+
+const cryptoCurrencies = {
+    bitcoin: btc,
+    ethereum: eth,
+    ripple: xrp
+};
+
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
         initFunctions();
@@ -49,10 +73,10 @@ function getBalance() {
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
                 if (httpRequest.status === 200) {
                     var balanceData = JSON.parse(httpRequest.responseText);
-                    document.getElementById("balanceAmount").textContent += Number.parseFloat(balanceData.usd).toFixed(2) + " $";
-                    document.getElementById("btc").textContent += Number.parseFloat(balanceData.btc).toFixed(2) + " ₿";
-                    document.getElementById("eth").textContent += Number.parseFloat(balanceData.eth).toFixed(2) + " Ξ";
-                    document.getElementById("xrp").textContent += Number.parseFloat(balanceData.xrp).toFixed(2) + " X";
+                    document.getElementById("balanceAmount").textContent = "Készpénz : " + Number.parseFloat(balanceData.usd).toFixed(2) + " $";
+                    document.getElementById("btc").textContent = cryptoCurrencies.bitcoin.name + " : " + Number.parseFloat(balanceData.btc).toFixed(2) + " " + cryptoCurrencies.bitcoin.symbol;
+                    document.getElementById("eth").textContent = cryptoCurrencies.ethereum.name + " : " + Number.parseFloat(balanceData.eth).toFixed(2) + " " + cryptoCurrencies.ethereum.symbol;
+                    document.getElementById("xrp").textContent = cryptoCurrencies.ripple.name + " : " + Number.parseFloat(balanceData.xrp).toFixed(2) + " " + cryptoCurrencies.ripple.symbol;
                 } else {
                     alert('There was a problem with the request.');
                 }
@@ -83,11 +107,42 @@ function populateSelects() {
             for (var i = 1; i < keys.length; i++) {
                 if (keys[i] !== "usd") {
                     purchaseDd.innerHTML += '<option value="' + keys[i] + '">' + keys[i] + '</option>';
-                    sellDd.innerHTML += '<option value="' + keys[i] + '">' + keys[i] + '</option>';                    
+                    sellDd.innerHTML += '<option value="' + keys[i] + '">' + keys[i] + '</option>';
                 }
             }
         }
     };
+}
+
+//Vásárás:
+function SendPurchaseRequest() {
+    document.getElementById("sellButton").disabled = true;
+    document.getElementById("purchaseButton").disabled = true;
+    var selectList = document.getElementById('sellDropdown');
+    var currency = selectList.options[selectList.selectedIndex].value.toUpperCase();
+    var amount = document.getElementById('purchaseAmount').value;
+    var resource = nagyvallalatiAPI_EndpointResources.purchase;
+
+    var data = JSON.stringify({ "Symbol": currency, "Amount": amount });
+
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function () {
+        if (this.readyState === XMLHttpRequest.DONE) {
+            if (this.status === 200) {
+                getBalance();
+            }
+            else if (this.status === 400) {
+                var responseMsg = JSON.parse(httpRequest.responseText);
+                alert(responseMsg.Message);
+            }
+            document.getElementById("sellButton").disabled = false;
+            document.getElementById("purchaseButton").disabled = false;
+        }
+    };
+    httpRequest.open("POST", resource, true);
+    httpRequest.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY);
+    httpRequest.setRequestHeader(nagyvallalatiAPI.headerContentType, nagyvallalatiAPI.myContentType);
+    httpRequest.send(data);
 }
 
 //Eladás:
@@ -99,22 +154,22 @@ function SendSellRequest() {
     var amount = document.getElementById('sellAmount').value;
     var resource = nagyvallalatiAPI_EndpointResources.sell;
 
-    var data = JSON.stringify({"Symbol":currency,"Amount":amount});
+    var data = JSON.stringify({ "Symbol": currency, "Amount": amount });
 
     var httpRequest = new XMLHttpRequest();
-    httpRequest.onreadystatechange = function() {
+    httpRequest.onreadystatechange = function () {
         if (this.readyState === XMLHttpRequest.DONE) {
             if (this.status === 200) {
                 getBalance();
             }
-            else if(this.status === 400){
+            else if (this.status === 400) {
                 var responseMsg = JSON.parse(httpRequest.responseText);
                 alert(responseMsg.Message);
             }
-            document.getElementById("sellButton").disabled = false; 
-            document.getElementById("purchaseButton").disabled = false; 
+            document.getElementById("sellButton").disabled = false;
+            document.getElementById("purchaseButton").disabled = false;
         }
-        };
+    };
     httpRequest.open("POST", resource, true);
     httpRequest.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY);
     httpRequest.setRequestHeader(nagyvallalatiAPI.headerContentType, nagyvallalatiAPI.myContentType);
