@@ -14,6 +14,7 @@ const nagyvallalatiAPI_EndpointResources = {
     exchange: nagyvallalatiAPI.url + "exchange/",
     account: nagyvallalatiAPI.url + "account/",
     purchase: nagyvallalatiAPI.url + "account/purchase/",
+    sell: nagyvallalatiAPI.url + "account/sell/",
     reset: nagyvallalatiAPI.url + "account/reset/",
     history: nagyvallalatiAPI.url + "account/history/"
 };
