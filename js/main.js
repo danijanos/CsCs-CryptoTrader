@@ -29,25 +29,6 @@ function initFunctions() {
     populateDropdowns();
 }
 
-
-function GetCurrency() {
-    var currency = document.getElementById('currency_type').value;
-    var resource = nagyvallalatiAPI_EndpointResources.exchange + currency;
-
-    var oReq = new XMLHttpRequest();
-    oReq.addEventListener("load", reqListener);
-    oReq.open("GET", resource, true);
-    oReq.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY);
-    oReq.send();
-}
-
-function reqListener() {
-    var currency = JSON.parse(this.responseText);
-    var currencyValue = Number.parseFloat(currency.currentRate).toFixed(2);
-    document.getElementById("currency_name").innerHTML = currency.symbol;
-    document.getElementById("currency_value").innerHTML = currencyValue;
-}
-
 function getBalance() {
 
     var httpRequest;
