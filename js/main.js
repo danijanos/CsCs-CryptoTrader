@@ -26,7 +26,7 @@ if (document.readyState === "loading") {
 
 function initFunctions() {
     getBalance()
-    populateDropdowns();
+    populateSelects();
 }
 
 function getBalance() {
@@ -58,4 +58,31 @@ function getBalance() {
             alert('Caught Exception: ' + e.description);
         }
     }
+}
+
+function populateSelects() {
+    var resource = nagyvallalatiAPI_EndpointResources.account;
+    var httpRequest = new XMLHttpRequest();
+
+    httpRequest.open("GET", resource, true);
+    httpRequest.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY);
+    httpRequest.send();
+
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
+
+            var currencies = JSON.parse(httpRequest.responseText);
+            var keys = Object.keys(currencies);
+
+            var sellDd = document.getElementById('sellDropdown');
+            var purchaseDd = document.getElementById('purchaseDropdown');
+
+            for (var i = 1; i < keys.length; i++) {
+                if (keys[i] !== "usd") {
+                    purchaseDd.innerHTML += '<option value="' + keys[i] + '">' + keys[i] + '</option>';
+                    sellDd.innerHTML += '<option value="' + keys[i] + '">' + keys[i] + '</option>';                    
+                }
+            }
+        }
+    };
 }
