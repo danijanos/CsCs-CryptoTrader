@@ -118,7 +118,8 @@ function populateSelects() {
 function SendPurchaseRequest() {
     document.getElementById("sellButton").disabled = true;
     document.getElementById("purchaseButton").disabled = true;
-    var selectList = document.getElementById('sellDropdown');
+
+    var selectList = document.getElementById('purchaseDropdown');
     var currency = selectList.options[selectList.selectedIndex].value.toUpperCase();
     var amount = document.getElementById('purchaseAmount').value;
     var resource = nagyvallalatiAPI_EndpointResources.purchase;
@@ -129,7 +130,7 @@ function SendPurchaseRequest() {
     httpRequest.onreadystatechange = function () {
         if (this.readyState === XMLHttpRequest.DONE) {
             if (this.status === 200) {
-                getBalance();
+                getBalance();                                  
             }
             else if (this.status === 400) {
                 var responseMsg = JSON.parse(httpRequest.responseText);
@@ -137,6 +138,7 @@ function SendPurchaseRequest() {
             }
             document.getElementById("sellButton").disabled = false;
             document.getElementById("purchaseButton").disabled = false;
+            document.getElementById('purchaseAmount').value = "";
         }
     };
     httpRequest.open("POST", resource, true);
@@ -149,6 +151,7 @@ function SendPurchaseRequest() {
 function SendSellRequest() {
     document.getElementById("sellButton").disabled = true;
     document.getElementById("purchaseButton").disabled = true;
+
     var selectList = document.getElementById('sellDropdown');
     var currency = selectList.options[selectList.selectedIndex].value.toUpperCase();
     var amount = document.getElementById('sellAmount').value;
@@ -168,6 +171,7 @@ function SendSellRequest() {
             }
             document.getElementById("sellButton").disabled = false;
             document.getElementById("purchaseButton").disabled = false;
+            document.getElementById('sellAmount').value = "";
         }
     };
     httpRequest.open("POST", resource, true);
