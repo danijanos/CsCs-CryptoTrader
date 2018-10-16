@@ -5,7 +5,9 @@
 const nagyvallalatiAPI = {
     url: "https://obudai-api.azurewebsites.net/api/",
     CsCs_APIKEY: "F98143CD-1DAF-4D4A-A929-E6588AD72C8B",
-    headerTokenType: "X-Access-Token"
+    headerTokenType: "X-Access-Token",
+    headerContentType: "Content-Type",
+    myContentType: "application/json"
 };
 
 const nagyvallalatiAPI_EndpointResources = {
