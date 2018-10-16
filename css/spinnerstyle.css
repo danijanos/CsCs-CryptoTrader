@@ -1,0 +1,45 @@
+/*
+SPINNER
+*/
+
+.loader {
+    border: 16px solid lightslategrey; /* Light grey */
+    border-top: 16px solid black;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+
+    opacity: 1;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -60px;
+    margin-left: -60px;
+}
+
+/*
+HTML Body Fade
+*/
+
+body.fade-out {
+    opacity: 0.5;
+    transition: 2s;
+}
+
+/*
+Disable body
+*/
+
+body.disabled { 
+    user-select: none;
+    pointer-events: none;
+}

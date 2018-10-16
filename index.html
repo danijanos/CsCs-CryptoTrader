@@ -12,6 +12,7 @@
 
   <!-- My stlyles -->
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/spinnerstyle.css">
 
   <!-- Optional JavaScript -->
 
@@ -75,66 +76,48 @@
         </div>
       </div>
 
-      <div class="row">
-        Tranzakció történet (táblázat)
-      </div>
+      <!-- Tranzakcio Tortenet -->
 
+      <div class="row">
+        <div class="accordion w-100" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">
+                  Tranzakcio Tortenet
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <table id="HistoryTable" class="table">
+                  <thead id="HistoryTableHeader">
+                    <th scope="col" id="createdAt">Datum</th>
+                    <th scope="col" id="type">Tranzakcio</th>
+                    <th scope="col" id="symbol">Valuta</th>
+                    <th scope="col" id="amount">Mennyiseg</th>
+                    <th scope="col" id="exchangeRate">USD</th>
+                  </thead>
+                  <tbody id="HistoryTableBody"></tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="col border">
       Kriptovaluta árfolyam (grafikon)
     </div>
-
-  </div>
-
-  <br>
-  <br>
-
-  <div class="row">
-    <div class="col">
-      <div class="row">
-
-        <div class="col column-spacer">
-
-          <div class="input-group mb-3">
-            <input id="currency_type" name="CurrencyType" type="text" class="form-control" placeholder="Type the name of the currency here"
-              aria-label="Type the name of the currency here" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" onclick="GetCurrency()">Get currency</button>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="row">
-
-        <div class="col">
-
-          <table class="table table-bordered thead-dark table-hover">
-            <thead>
-              <tr>
-                <th>Currency Name</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td id="currency_name"></td>
-                <td id="currency_value"></td>
-              </tr>
-            </tbody>
-          </table>
-
-        </div>
-
-      </div>
-    </div>
-
   </div>
 
   <script src="js/main.js"></script>
+  <script src="js/spinner.js"></script>
+  <script src="js/table.js"></script>
 </body>
 
 </html>
