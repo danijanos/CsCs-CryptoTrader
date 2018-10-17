@@ -25,7 +25,7 @@ const btc = {
     symbol: "Ƀ"
 }
 
-const eth = {    
+const eth = {
     name: "Ethereum",
     mark: "ETH",
     symbol: "Ξ"
@@ -115,6 +115,7 @@ function populateSelects() {
 }
 
 //Vásárás:
+
 function SendPurchaseRequest() {
     document.getElementById("sellButton").disabled = true;
     document.getElementById("purchaseButton").disabled = true;
@@ -130,7 +131,8 @@ function SendPurchaseRequest() {
     httpRequest.onreadystatechange = function () {
         if (this.readyState === XMLHttpRequest.DONE) {
             if (this.status === 200) {
-                getBalance();                                  
+                getBalance();
+                GetHistory();
             }
             else if (this.status === 400) {
                 var responseMsg = JSON.parse(httpRequest.responseText);
@@ -148,6 +150,7 @@ function SendPurchaseRequest() {
 }
 
 //Eladás:
+
 function SendSellRequest() {
     document.getElementById("sellButton").disabled = true;
     document.getElementById("purchaseButton").disabled = true;
@@ -178,4 +181,42 @@ function SendSellRequest() {
     httpRequest.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY);
     httpRequest.setRequestHeader(nagyvallalatiAPI.headerContentType, nagyvallalatiAPI.myContentType);
     httpRequest.send(data);
+}
+
+// Reset:
+
+function sendReset() {
+    var resource = nagyvallalatiAPI_EndpointResources.reset;
+    var httpRequest;
+    document.getElementById("resetButton").addEventListener('click', makeReset);
+
+    function makeReset() {
+        httpRequest = new XMLHttpRequest();
+
+        if (!httpRequest) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+
+        httpRequest.onreadystatechange = alertContents;
+        httpRequest.open('POST', resource, true);
+        httpRequest.setRequestHeader(nagyvallalatiAPI.headerTokenType, nagyvallalatiAPI.CsCs_APIKEY);
+        httpRequest.setRequestHeader(nagyvallalatiAPI.headerContentType, nagyvallalatiAPI.myContentType);
+        httpRequest.send();
+    }
+
+    function alertContents() {
+        try {
+            if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                if (httpRequest.status === 200) {
+                    getBalance();
+                } else {
+                    alert('There was a problem with the request.');
+                }
+            }
+        }
+        catch (e) {
+            alert('Caught Exception: ' + e.description);
+        }
+    }
 }

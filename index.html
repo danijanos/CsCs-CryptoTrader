@@ -34,7 +34,7 @@
       <h1 class="display-4 text-info">Kereskedés</h1>
 
       <!-- Balance -->
-      <div class="row-sm border">
+      <div class="row border">
 
         <div class="card border-info" style="max-width: 18rem;">
           <div class="card-header text-white bg-info text-uppercase font-weight-bold">Egyenleg</div>
@@ -53,6 +53,14 @@
                 Ripple :
               </li>
             </ul>
+          </div>
+        </div>
+
+        <div class="card ml-3 mt-5" style="width: 18rem; height: 10 rem;">
+          <div class="card-body">
+            <h5 class="card-title text-danger">Alaphelyzet</h5>
+            <p class="card-text">A gomb megnyomásával visszaállíthatja alaphelyzetbe az egyenlegét:</p>
+            <button id="resetButton" class="btn btn-outline-danger text-uppercase" type="submit" onclick="sendReset()">visszaállítás</button>
           </div>
         </div>
 
@@ -156,9 +164,9 @@
     </div>
   </div>
 
-  <script src="js/main.js"></script>
-  <script src="js/spinner.js"></script>
-  <script src="js/table.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/spinner.js"></script>
+  <script type="text/javascript" src="js/table.js"></script>
 
 </body>
 
