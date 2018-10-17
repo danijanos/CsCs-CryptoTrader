@@ -32,7 +32,7 @@
 
     <div class="col-sm-7 border">
       <h1 class="display-4 text-info">Kereskedés</h1>
-      
+
       <!-- Balance -->
       <div class="row-sm border">
 
@@ -107,7 +107,7 @@
       <!-- Tranzakcio Tortenet -->
       <div class="row">
 
-        <div class="accordion w-100" id="accordionExample">
+        <div class="accordion w-100" id="Trans_history_accordion">
 
           <div class="card">
             <div class="card-header" id="headingOne">
@@ -119,22 +119,30 @@
               </h5>
             </div>
 
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-              <div class="card-body">
-                <table id="HistoryTable" class="table">
-                  <thead id="HistoryTableHeader">
-                    <th scope="col" id="createdAt">Datum</th>
-                    <th scope="col" id="type">Tranzakcio</th>
-                    <th scope="col" id="symbol">Valuta</th>
-                    <th scope="col" id="amount">Mennyiseg</th>
-                    <th scope="col" id="exchangeRate">USD</th>
-                  </thead>
-                  <tbody id="HistoryTableBody">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#Trans_history_accordion">
 
-                  </tbody>
-                </table>
+              <div class="card-body">
+
+                <div class="table-responsive-sm">
+
+                  <table id="HistoryTable" class="table table-sm table-hover">
+                    <thead class="thead-light" id="HistoryTableHeader">
+                      <th scope="col" id="createdAt">Dátum</th>
+                      <th scope="col" id="type">Tranzakció típusa</th>
+                      <th scope="col" id="symbol">Valuta</th>
+                      <th scope="col" id="amount">Mennyiség</th>
+                      <th scope="col" id="exchangeRate">USD értéke</th>
+                    </thead>
+                    <tbody id="HistoryTableBody">
+                      <!-- Dinamikusan generált -->
+                    </tbody>
+                  </table>
+
+                </div>
+
               </div>
             </div>
+
           </div>
 
         </div>

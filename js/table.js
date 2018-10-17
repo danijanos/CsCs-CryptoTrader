@@ -22,27 +22,43 @@ function historyListener() {
     var historyJSON = JSON.parse(this.responseText);
 
     for (i = historyJSON.length - 1; i > 0; i--) {
-        if (historyJSON[i].type == "Reset") { continue; }
+
+        if (historyJSON[i].type == "Reset") {
+            continue;
+        }
 
         var newrow = document.createElement("tr");
+
         for (j = 0; j < HistoryTableHeaders.length; j++) {
+
             var tdnode = document.createElement("td");
 
             switch (HistoryTableHeaders[j].id) {
                 case "createdAt":
                     var datestring = historyJSON[i][HistoryTableHeaders[j].id]
-                    tdnode.innerText = String(datestring).replace("T", " ").substring(0,19);
+                    tdnode.innerText = String(datestring).replace("T", " ").substring(0, 19);
                     break;
                 case "exchangeRate":
-                    currentrate = historyJSON[i].exchangeRates["btc"];
-                    tdnode.innerText = currentrate * historyJSON[i].amount;
+                    // ennyiért vettem meg vagy adtam el az adott pillanatban:
+                    currentrate = historyJSON[i].exchangeRates[(historyJSON[i].symbol).toLowerCase()];
+                    tdnode.innerText = Number(currentrate * historyJSON[i].amount).toFixed(2) + " $";
+                    break;
+                case "type":
+                    if (historyJSON[i].type == "Purchase") {
+                        tdnode.innerText = "Vásárlás";
+                    } else if (historyJSON[i].type == "Sell") {
+                        tdnode.innerText = "Eladás";
+                    } else {
+                        tdnode.innerText = "Reset";
+                    }
                     break;
                 default:
                     tdnode.innerText = historyJSON[i][HistoryTableHeaders[j].id];
             }
+
             newrow.appendChild(tdnode);
         }
+
         HistoryTableBody.appendChild(newrow);
     }
-    console.log(Date.parse(historyJSON[historyJSON.length - 1].createdAt));
 }
