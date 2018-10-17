@@ -31,12 +31,12 @@
   <div class="row">
 
     <div class="col-sm-7 border">
-      Kereskedés
-
+      <h1 class="display-4 text-info">Kereskedés</h1>
+      
       <!-- Balance -->
-      <div class="row border">
+      <div class="row-sm border">
 
-        <div class="card border-info mb-3" style="max-width: 18rem;">
+        <div class="card border-info" style="max-width: 18rem;">
           <div class="card-header text-white bg-info text-uppercase font-weight-bold">Egyenleg</div>
           <div class="card-body text-dark">
             <ul class="list-group list-group-flush">
@@ -58,34 +58,63 @@
 
       </div>
 
-      <div class="row">
-        <div class="col-8 col-sm-6 border">
-          Eladás
-        </div>
-        <div class="col-4 col-sm-6 border">
-          Vétel
-        </div>
+      <!--Aktualis arfolyam -->
+      <div class="row-sm border">
+        Arfolyam
       </div>
 
+      <!-- Adas-Vetel -->
       <div class="row">
-        <div class="col border">
-          Eladás részletek
+
+        <!-- Vetel -->
+        <div class="col-6 col-sm-6">
+          <div class="card border-info" style="max-width: 18rem;">
+            <div class="card-body text-info">
+              <div class="input-group">
+                <input type="text" id="purchaseAmount" class="form-control" placeholder="Mennyiség:" aria-label="Vásárolni kívánt valuta mennyisége"
+                  aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <select id="purchaseDropdown" class="custom-select"></select>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent border-info">
+              <button id="purchaseButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="SendPurchaseRequest()">VÉTEL</button>
+            </div>
+          </div>
         </div>
-        <div class="col border">
-          Vétel részletek
+
+        <!-- Eladas -->
+        <div class="col-6 col-sm-6 border">
+          <div class="card border-info" style="max-width: 18rem;">
+            <div class="card-body text-info">
+              <div class="input-group">
+                <input type="text" id="sellAmount" class="form-control" placeholder="Mennyiség:" aria-label="Eladni kívánt valuta mennyisége"
+                  aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <select id="sellDropdown" class="custom-select"></select>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent border-info">
+              <button id="sellButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="SendSellRequest()">ELADÁS</button>
+            </div>
+          </div>
         </div>
+
       </div>
 
       <!-- Tranzakcio Tortenet -->
-
       <div class="row">
+
         <div class="accordion w-100" id="accordionExample">
+
           <div class="card">
             <div class="card-header" id="headingOne">
               <h5 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
                   aria-expanded="true" aria-controls="collapseOne">
-                  Tranzakcio Tortenet
+                  Tranzakció történet
                 </button>
               </h5>
             </div>
@@ -100,14 +129,18 @@
                     <th scope="col" id="amount">Mennyiseg</th>
                     <th scope="col" id="exchangeRate">USD</th>
                   </thead>
-                  <tbody id="HistoryTableBody"></tbody>
+                  <tbody id="HistoryTableBody">
+
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
+
         </div>
+
       </div>
+
     </div>
 
     <div class="col border">
@@ -118,6 +151,7 @@
   <script src="js/main.js"></script>
   <script src="js/spinner.js"></script>
   <script src="js/table.js"></script>
+
 </body>
 
 </html>
