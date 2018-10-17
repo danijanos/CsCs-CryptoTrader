@@ -35,31 +35,23 @@ function sendReplacement(data) {
     if (this.onload){
         this._onload = this.onload;
     }
-
     if (this.onerror){
         this._onerror = this.onerror;
     }
-
     activeHttpRequestCounter.count++;
-    console.log("pluuusz");
-
     this.onload = onLoadReplacement;
     this.onerror = onErrorReplacement;
     return send.apply(this, arguments);
 }
 
 function onLoadReplacement() {
-
     activeHttpRequestCounter.count--;
-    console.log("minuuuusz");
     if (this._onload) {
         return this._onload.apply(this, arguments);
     }
 }
 
 function onErrorReplacement() {
-    //alert("BUZI VAGY?!?!?!");
-    console.log("eljutottunk ide");
     loadingSpinnerOff();
     if (this._onerror) {
         return this._onerror.apply(this, arguments);
@@ -77,8 +69,6 @@ function onCounterValueChange() {
 }
 
 // Spinner Functions
-// Delay nem mukodik tul jol, csak ovatosan
-
 async function loadingSpinnerOn(delay, fade, disablebody) {
     if (SpinnerOn) { return; }
     
@@ -96,13 +86,9 @@ async function loadingSpinnerOn(delay, fade, disablebody) {
 
 async function loadingSpinnerOff() {
     SpinnerOn = false;
-
     document.body.classList.remove('fade-out');
     document.body.classList.remove('disabled');
-
-    var spinner = document.getElementById("spinner");
-
-    //document.body.removeChild(spinner);
+    var spinner = document.getElementById("spinner");    
     if(spinner!=null){spinner.remove();}
 }
 

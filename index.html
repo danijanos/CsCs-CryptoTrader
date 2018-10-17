@@ -32,9 +32,9 @@
 
     <div class="col-sm-7 border">
       <h1 class="display-4 text-info">Kereskedés</h1>
-      
+
       <!-- Balance -->
-      <div class="row-sm border">
+      <div class="row border">
 
         <div class="card border-info" style="max-width: 18rem;">
           <div class="card-header text-white bg-info text-uppercase font-weight-bold">Egyenleg</div>
@@ -56,11 +56,19 @@
           </div>
         </div>
 
+        <div class="card ml-3 mt-5" style="width: 18rem; height: 10 rem;">
+          <div class="card-body">
+            <h5 class="card-title text-danger">Alaphelyzet</h5>
+            <p class="card-text">A gomb megnyomásával visszaállíthatja alaphelyzetbe az egyenlegét:</p>
+            <button id="resetButton" class="btn btn-outline-danger text-uppercase" type="submit" onclick="sendReset()">visszaállítás</button>
+          </div>
+        </div>
+
       </div>
 
       <!--Aktualis arfolyam -->
-      <div class="row-sm border">
-        Arfolyam
+      <div class="row-sm border mt-3">
+        <h3 class="display-5 text-info font-weight-bold">Árfolyam</h3>
       </div>
 
       <!-- Adas-Vetel -->
@@ -105,36 +113,44 @@
       </div>
 
       <!-- Tranzakcio Tortenet -->
-      <div class="row">
+      <div class="row mt-3">
 
-        <div class="accordion w-100" id="accordionExample">
+        <div class="accordion w-100" id="Trans_history_accordion">
 
           <div class="card">
-            <div class="card-header" id="headingOne">
+            <div class="card-header text-white bg-info text-uppercase font-weight-bold" id="headingOne">
               <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                <button class="btn btn-outline-info text-uppercase text-white" type="button" data-toggle="collapse" data-target="#collapseOne"
                   aria-expanded="true" aria-controls="collapseOne">
                   Tranzakció történet
                 </button>
               </h5>
             </div>
 
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-              <div class="card-body">
-                <table id="HistoryTable" class="table">
-                  <thead id="HistoryTableHeader">
-                    <th scope="col" id="createdAt">Datum</th>
-                    <th scope="col" id="type">Tranzakcio</th>
-                    <th scope="col" id="symbol">Valuta</th>
-                    <th scope="col" id="amount">Mennyiseg</th>
-                    <th scope="col" id="exchangeRate">USD</th>
-                  </thead>
-                  <tbody id="HistoryTableBody">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#Trans_history_accordion">
 
-                  </tbody>
-                </table>
+              <div class="card-body">
+
+                <div class="table-responsive-sm">
+
+                  <table id="HistoryTable" class="table table-sm table-hover table-bordered">
+                    <thead class="thead-light" id="HistoryTableHeader">
+                      <th scope="col" id="createdAt">Dátum</th>
+                      <th scope="col" id="type">Tranzakció típusa</th>
+                      <th scope="col" id="symbol">Valuta</th>
+                      <th scope="col" id="amount">Mennyiség</th>
+                      <th scope="col" id="exchangeRate">USD értéke</th>
+                    </thead>
+                    <tbody id="HistoryTableBody">
+                      <!-- Dinamikusan generált -->
+                    </tbody>
+                  </table>
+
+                </div>
+
               </div>
             </div>
+
           </div>
 
         </div>
@@ -148,9 +164,9 @@
     </div>
   </div>
 
-  <script src="js/main.js"></script>
-  <script src="js/spinner.js"></script>
-  <script src="js/table.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/spinner.js"></script>
+  <script type="text/javascript" src="js/table.js"></script>
 
 </body>
 
