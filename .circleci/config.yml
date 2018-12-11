@@ -12,3 +12,14 @@ workflows:
   commit-workflow:
     jobs:
       - build
+  nightly-workflow:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build
+      - deploy
