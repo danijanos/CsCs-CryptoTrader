@@ -19,3 +19,7 @@ body {
 .column-spacer {
   margin: 0 0 10px 0;
 }
+
+#chart {
+  max-width: 650px;
+}
