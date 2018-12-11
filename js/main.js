@@ -123,6 +123,9 @@ function SendPurchaseRequest() {
     var selectList = document.getElementById('purchaseDropdown');
     var currency = selectList.options[selectList.selectedIndex].value.toUpperCase();
     var amount = document.getElementById('purchaseAmount').value;
+    if (isNaN(amount)){
+        alert("A beirt osszeg nem egy szam!");
+    }
     var resource = nagyvallalatiAPI_EndpointResources.purchase;
 
     var data = JSON.stringify({ "Symbol": currency, "Amount": amount });
@@ -158,6 +161,9 @@ function SendSellRequest() {
     var selectList = document.getElementById('sellDropdown');
     var currency = selectList.options[selectList.selectedIndex].value.toUpperCase();
     var amount = document.getElementById('sellAmount').value;
+    if (isNaN(amount)){
+        alert("A beirt osszeg nem egy szam!");
+    }
     var resource = nagyvallalatiAPI_EndpointResources.sell;
 
     var data = JSON.stringify({ "Symbol": currency, "Amount": amount });
