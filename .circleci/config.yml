@@ -6,3 +6,9 @@ jobs:
     steps:
       - checkout
       - run: echo "Hello Circle Ci in CsCs-CryptoTrader"
+
+workflows:
+  version: 2
+  commit-workflow:
+    jobs:
+      - build
