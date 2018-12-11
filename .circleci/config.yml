@@ -3,15 +3,28 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.4.1
+    working_directory: ~/CsCs_CryptoTrader
     steps:
       - checkout
       - run: echo "Hello Circle Ci in CsCs-CryptoTrader"
 
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/CsCs_CryptoTrader
+    environment:
+      HEROKU_APP: "sleepy-refuge-55486"
+    steps:
+      - checkout
+      - run: echo "Itt kene configolni a deploy szerver dolgait"
+
 workflows:
   version: 2
+
   commit-workflow:
     jobs:
       - build
+
   nightly-workflow:
     triggers:
       - schedule:
@@ -22,4 +35,6 @@ workflows:
                 - master
     jobs:
       - build
-      - deploy
+      - deploy:
+          requires:
+            - build
