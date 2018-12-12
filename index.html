@@ -33,14 +33,14 @@
   <div class="row">
 
     <!-- Bal oldal -->
-    <div class="col-sm-7 border">
-      <h1 class="display-4 text-info">Kereskedés</h1>
+    <div class="col-sm-7">
+      <h1 class="display-4 p-3 bg-success text-white rounded">CsCs Kriptotrader</h1>
 
       <!-- Balance -->
-      <div class="row border">
+      <div class="row ml-3">
 
-        <div class="card border-info" style="max-width: 18rem;">
-          <div class="card-header text-white bg-info text-uppercase font-weight-bold">Egyenleg</div>
+        <div class="card border-success" style="max-width: 18rem;">
+          <div class="card-header bg-success text-white text-uppercase font-weight-bold">Egyenleg</div>
           <div class="card-body text-dark">
             <ul class="list-group list-group-flush">
               <li id="balanceAmount" class="list-group-item text-success">
@@ -59,7 +59,7 @@
           </div>
         </div>
 
-        <div class="card ml-3 mt-5" style="width: 18rem; height: 10 rem;">
+        <div class="card border-success ml-3 mt-5" style="width: 18rem; height: 10 rem;">
           <div class="card-body">
             <h5 class="card-title text-danger">Alaphelyzet</h5>
             <p class="card-text">A gomb megnyomásával visszaállíthatja alaphelyzetbe az egyenlegét:</p>
@@ -70,45 +70,45 @@
       </div>
 
       <!--Aktualis arfolyam -->
-      <div class="row-sm border mt-3">
-        <h3 class="display-5 text-info font-weight-bold">Árfolyam</h3>
+      <div class="row-sm mt-3">
+        <h3 class="display-5 p-3 bg-success text-white font-weight-bold rounded">Kereskedés</h3>
       </div>
 
       <!-- Adas-Vetel -->
-      <div class="row">
+      <div class="row ml-1">
 
         <!-- Vetel -->
         <div class="col-6 col-sm-6">
-          <div class="card border-info" style="max-width: 18rem;">
-            <div class="card-body text-info">
+          <div class="card border-success" style="max-width: 18rem;">
+            <div class="card-body bg-success text-white">
               <div class="input-group">
                 <input type="text" id="purchaseAmount" class="form-control" placeholder="Mennyiség:" aria-label="Vásárolni kívánt valuta mennyisége"
                   aria-describedby="basic-addon2" required>
                 <div class="input-group-append">
-                  <select id="purchaseDropdown" class="custom-select"></select>
+                  <select id="purchaseDropdown" class="custom-select bg-success text-white text-uppercase font-weight-bold"></select>
                 </div>
               </div>
             </div>
-            <div class="card-footer bg-transparent border-info">
-              <button id="purchaseButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="SendPurchaseRequest()">VÉTEL</button>
+            <div class="card-footer bg-transparent border-success">
+              <button id="purchaseButton" class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="SendPurchaseRequest()">VÉTEL</button>
             </div>
           </div>
         </div>
 
         <!-- Eladas -->
-        <div class="col-6 col-sm-6 border">
-          <div class="card border-info" style="max-width: 18rem;">
-            <div class="card-body text-info">
+        <div class="col-6 col-sm-6">
+          <div class="card border-success" style="max-width: 18rem;">
+            <div class="card-body text-info bg-success">
               <div class="input-group">
                 <input type="text" id="sellAmount" class="form-control" placeholder="Mennyiség:" aria-label="Eladni kívánt valuta mennyisége"
                   aria-describedby="basic-addon2" required>
                 <div class="input-group-append">
-                  <select id="sellDropdown" class="custom-select"></select>
+                  <select id="sellDropdown" class="custom-select bg-success text-white text-uppercase font-weight-bold"></select>
                 </div>
               </div>
             </div>
-            <div class="card-footer bg-transparent border-info">
-              <button id="sellButton" class="btn btn-outline-info my-2 my-sm-0" type="submit" onclick="SendSellRequest()">ELADÁS</button>
+            <div class="card-footer bg-transparent border-success">
+              <button id="sellButton" class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="SendSellRequest()">ELADÁS</button>
             </div>
           </div>
         </div>
@@ -116,14 +116,14 @@
       </div>
 
       <!-- Tranzakcio Tortenet -->
-      <div class="row mt-3">
+      <div class="row mt-3 ml-0">
 
         <div class="accordion w-100" id="Trans_history_accordion">
 
           <div class="card">
-            <div class="card-header text-white bg-info text-uppercase font-weight-bold" id="headingOne">
+            <div class="card-header bg-success" id="headingOne">
               <h5 class="mb-0">
-                <button class="btn btn-outline-info text-uppercase text-white" type="button" data-toggle="collapse"
+                <button class="btn btn-outline-success btn-lg text-white" type="button" data-toggle="collapse"
                   data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   Tranzakció történet
                 </button>
@@ -163,7 +163,7 @@
     </div>
 
     <!-- Jobb oldal -->
-    <div class="col border">
+    <div class="col">
       <div id="chart">
       </div>
     </div>
